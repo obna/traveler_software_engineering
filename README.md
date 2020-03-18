@@ -3,7 +3,7 @@
 Group Members:
  1) Charles Thomas
  2) Omoremi Adeleke
- 3)
+ 3) Tania Ortiz-Rosales
  4)
 
 Feature: index page
