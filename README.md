@@ -2,9 +2,9 @@
 
 Group Members:
  1) Charles Thomas
- 2)
- 3)
- 4)
+ 2) Omoremi Adeleke
+ 3) Tania Ortiz-Rosales
+ 4) Redeat Kibebew
 
 Feature: index page
 As an authenticated user of the web site
