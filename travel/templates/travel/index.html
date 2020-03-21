@@ -1,0 +1,29 @@
+<!-- index renders a list of all the problems in the DB -->
+<!-- should implement a search button at some point -->
+{% extends "travel/base.html" %}
+
+{% block content %}
+
+{% if error %}
+          <h3 class="title is-3" style="color: red"><center>{{ error }}</center></h3>
+{% endif %}
+
+
+<div class="has-text-centered tile is-ancestor">
+          <div style="margin: auto" class="tile is-8 is-parent">
+              <div class="tile is-child box">
+                  <h1 class="title is-2"> Hello <span style="color:#1496ed">{{ user.username }}</span> </h1>
+           <h2 class="title is-3">Welcome to Traveler.</h2>
+           <h4 class="title is-5" style="color:#1496ed">This is under construction!</h4>
+
+<!-- we have the object {'all_problems': all_problems} from the views  -->
+{% for p in all_problems %}
+              <div class="box">
+                  <div class="content" align="left">
+                      <a class="button is-success is-small" href="{% url 'share:show_problem' p.id %}">
+                        {{ p.title }} </a> by {{ p.coder.user.username }}
+                  </div>
+              </div>
+{% endfor %}
+
+{% endblock content %}
