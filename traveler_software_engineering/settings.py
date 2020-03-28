@@ -62,13 +62,25 @@ WSGI_APPLICATION = 'traveler_software_engineering.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+# This setting allow us to use the Heroku DB locally
 DATABASES = {
-#     'default': {
+    'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',
+    'ENGINE': 'django.db.backends.postgresql_psycopg2',
 #         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
+    }
 }
-DATABASES['default'] = dj_database_url.config()
+
+#DATABASES['default'] = dj_database_url.config()
+DATABASES['default'] = dj_database_url.config(default='postgres://kbqvogagwdknwb:1a2bd480ba9997c8ee7982257e1aeb0dba9b33c2c93cc4736149dcb60743d710@ec2-52-207-93-32.compute-1.amazonaws.com:5432/de7sqp9uf3620a')
+# The content of default= '  '   is  found in Heroku app URI, starts with postgres://...
+# allow us to connect locally the DB is Heroku
+
+db_from_env = dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(db_from_env)
+# try runserver localy now
+# python manage.py runserver
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
