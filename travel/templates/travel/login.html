@@ -1,9 +1,20 @@
-{% extends "share/base.html" %}
+{% extends "travel/base.html" %}
 
 {% block content %}
 
 <div class="columns">
       <div class="column">
+
+        <div class="has-text-centered tile is-ancestor">
+                  <div style="margin: auto" class="tile is-8 is-parent">
+                      <div class="tile is-child box">
+                          <h1 class="title is-2"> Hello <span style="color:#1496ed">{{ user.username }}</span> </h1>
+                   <h2 class="title is-3">Welcome to Traveler</h2>
+                      </div>
+                 </div>
+        </div>
+      </div>
+</div>
 
            <nav class="panel">
             <p class="panel-heading" style="text-align:center">
@@ -47,7 +58,6 @@
                   </form>
             </div>
           </nav>
-
         </div>
       </div>
 

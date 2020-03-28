@@ -22,8 +22,10 @@ def index(request):
         #if request.user.is_authenticated:
         user = request.user
             #all_problems = Problem.objects.all()   # all_problems is a list object [   ]
-
-        return render(request, "travel/index.html", {"user":user})
+        if not user.is_authenticated:
+            return redirect("travel:login")
+        else:
+            return render(request, "travel/index.html", {"user":user})
         #else:
         #    return redirect("travel:login")
     else:
