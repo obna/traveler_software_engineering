@@ -1,4 +1,4 @@
-{% extends "share/base.html" %}
+{% extends "travel/base.html" %}
 
 {% block content %}
 
@@ -13,7 +13,7 @@
 
               <div class="panel-block">
                   <!-- the action of the form goes to create function in views.py -->
-                   <form class="control" action="{% url 'share:create' %}" method="post">
+                   <form class="control" action="{% url 'travel:create' %}" method="post">
                           {% csrf_token %}
                           <div class="field">
                               <label class="label">Username</label>

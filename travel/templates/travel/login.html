@@ -1,4 +1,4 @@
-{% extends "share/base.html" %}
+{% extends "travel/base.html" %}
 
 {% block content %}
 
@@ -12,7 +12,7 @@
 
             <div class="panel-block">
 
-                 <form action="{% url 'share:loguser' %}" method="post">
+                 <form action="{% url 'travel:loguser' %}" method="post">
 
                       {% csrf_token %}
                       <div class="field">
