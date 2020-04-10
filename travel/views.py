@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 
 # Import all the models created so far
-from travel.models import Traveler
+from .models import Traveler, Location, Destination, Review, Comment
 
 # import User model
 from django.contrib.auth.models import User
