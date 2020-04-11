@@ -117,3 +117,74 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect("travel:login")
+
+def create_destination(request):
+    pass
+
+def show_destination(request, destination_id):
+    if request.method == "GET":
+        user = request.user
+        if not user.is_authenticated:
+            return redirect("travel:login")
+        else:
+            # make sure to import the fucntion get_object_or_404 from  django.shortcuts
+            destination = get_object_or_404(Destination, pk=destination_id)
+            reviews = Review.objects.filter(destination=destination_id)
+            return render(request, "travel/show_destination.html", {"user":user, "destination":destination, "reviews":reviews})
+
+def edit_destination(request, destination_id):
+    pass
+
+def update_destination(request, destination_id):
+    pass
+
+def delete_destination(request, destination_id):
+    pass
+
+def create_location(request):
+    pass
+
+def show_location(request, location_id):
+    if request.method == "GET":
+        user = request.user
+        if not user.is_authenticated:
+            return redirect("travel:login")
+        else:
+            # make sure to import the fucntion get_object_or_404 from  django.shortcuts
+            location = get_object_or_404(Location, pk=location_id)
+            destinations = Destination.objects.filter(location=location_id)
+
+            return render(request, "travel/show_location.html", {"user":user, "location":location, "destinations":destinations})
+
+def edit_location(request, location_id):
+    pass
+
+def update_location(request, location_id):
+    pass
+
+def delete_location(request, location_id):
+    pass
+
+def create_review(request, destination_id):
+    pass
+
+def show_review(request, review_id):
+    if request.method == "GET":
+        user = request.user
+        if not user.is_authenticated:
+            return redirect("travel:login")
+        else:
+            # make sure to import the fucntion get_object_or_404 from  django.shortcuts
+            review = get_object_or_404(Review, pk=review_id)
+            comments = Comment.objects.filter(review=review_id)
+
+            return render(request, "travel/show_review.html", {"user":user, "review":review, "comments":comments})
+
+def edit_review(request, review_id):
+    pass
+
+def update_review(request, review_id):
+    pass
+
+def delete_review(request, review_id):
+    pass

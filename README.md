@@ -18,5 +18,11 @@ I want to have a page dashboard.html that shows
 So that  I can
 Route:  /dashboard or dashboard → views.dashboard function → dashboard.html
 
+Feature: Show a Destination
+As an authenticated user of the web site traveler
+I want a destination to be displayed with all of its features
+So that I can see the location, interesting features, and other descriptions about a destination.
+Route: show → views.show_destination → show_destination.html
+
 
 # source djangoenv/Scripts/activate
