@@ -17,7 +17,7 @@ reviews: {{reviews}} <br>
           {% endif %}
 
             <h2 class="title is-2">Destination created by:
-              <span style="color:blue">{{ destination.coder.user.username }}</span>
+              <span style="color:blue">{{ destination.traveler.user.username }}</span>
             </h2>
             <div class="box">
               <div class="content">
@@ -25,7 +25,7 @@ reviews: {{reviews}} <br>
                   <b>Title:</b> <font color="red">{{ destination.title }}</font> <br><br>
                   <b>Located in</b> <font color="red">{{ destination.location }}</font> <br><br>
                   <b>Address:</b> <font color="red">{{ destination.address }}</font> <br><br>
-                  <b>Created by</b> <font color="red">{{ destination.coder.user.username }}</font> <b>on</b>
+                  <b>Created by</b> <font color="red">{{ destination.traveler.user.username }}</font> <b>on</b>
                     <font color="red">{{ destination.created }}</font> <br><br>
                   <b>Description:</b> <font color="red">{{ destination.description }}</font> <br><br>
 
@@ -36,7 +36,7 @@ reviews: {{reviews}} <br>
 
                       {% for r in reviews %}
                         <div class="content">
-                            <br>Review title: <font color="red"><u>{{ r.title }}</u>, written by  {{r.coder.user.username}}</font>
+                            <br><font color="red"><u>{{ r.title }}</u>, written by  {{r.traveler.user.username}}</font>
                             <a class="button is-primary is-small"
 
 
@@ -49,12 +49,12 @@ reviews: {{reviews}} <br>
                     </div>
                     {% else %}
 
-                    These are no reviews written for this destination.
+                    There are no reviews written for this destination.
 
                   {% endif %}
                   <br><br>
                   <!-- Module 6 -->
-                  {% if user.id == destination.coder.user.id and not reviews %}
+                  {% if user.id == destination.traveler.user.id and not reviews %}
                     <a class="button is-primary is-medium"
                        href="{% url 'travel:edit_destination' destination.id %}">Make changes ... </a>
                   {% endif %}

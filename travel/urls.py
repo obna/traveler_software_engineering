@@ -33,4 +33,8 @@ urlpatterns = [
     path('review/<int:review_id>/edit', views.edit_review, name='edit_review'),
     path('review/<int:review_id>/update', views.update_review, name='update_review'),
     path('review/<int:review_id>/delete', views.delete_review, name='delete_review'),
+
+    #Comment
+    path('comment/<int:review_id>/create', views.create_comment, name='create_comment'),
+
 ]

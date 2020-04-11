@@ -188,3 +188,6 @@ def update_review(request, review_id):
 
 def delete_review(request, review_id):
     pass
+
+def create_comment(request, review_id):
+    pass
