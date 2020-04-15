@@ -19,15 +19,13 @@ def index(request):
     print('*******************************')
 
     if request.method == "GET":
-        #if request.user.is_authenticated:
-        user = request.user
-            #all_problems = Problem.objects.all()   # all_problems is a list object [   ]
-        if not user.is_authenticated:
-            return redirect("travel:login")
+        if request.user.is_authenticated:
+            user = request.user
+            all_locations = Location.objects.all()   # all_problems is a list object [   ]
+
+            return render(request, "travel/index.html", {"user":user, "all_locations": all_locations})
         else:
-            return render(request, "travel/index.html", {"user":user})
-        #else:
-        #    return redirect("travel:login")
+            return redirect("travel:login")
     else:
         return HttpResponse(status=500)
 
