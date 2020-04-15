@@ -24,5 +24,10 @@ I want a destination to be displayed with all of its features
 So that I can see the location, interesting features, and other descriptions about a destination.
 Route: show → views.show_destination → show_destination.html
 
+Feature: Show a Review
+As an authenticated user of the web site traveler
+I want reviews of destinations to be displayed
+So that I can see people’s suggestions
+Route: show → views.show_review → show_review.html
 
 # source djangoenv/Scripts/activate
