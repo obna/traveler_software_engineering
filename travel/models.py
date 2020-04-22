@@ -7,7 +7,7 @@ class Traveler(models.Model):
 	def __str__(self):
 		return self.user.username
 
-	traveler_yet = models.BooleanField(default=False)  # the user is not a coder yet
+	traveler_yet = models.BooleanField(default=False)  # the user is not a traveler yet
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
 	created = models.DateField(auto_now=True)   # maybe redundant, user model has date_joined :)
 	updated = models.DateField(auto_now=True)

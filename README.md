@@ -39,3 +39,6 @@ Route: location/<int:location_id>/show or show_location → views.show_location 
 >>>>>>> d4bd3fcecec0a6508aa367da3c5cbb0d06f92ec9
 
 # source djangoenv/Scripts/activate
+
+show my own destinations and reviews,
+show comments on places that I visit so that I can learn more about specific places to go

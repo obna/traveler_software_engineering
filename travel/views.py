@@ -45,20 +45,26 @@ def dashboard(request):
     print('request.user:' , request.user)
     print('*******************************')
 
+
     if request.method == "GET":
-        user = request.user
-        if not user.is_authenticated:
-            return redirect("travel:login")
-        else:
-            #my_problems = Problem.objects.filter(coder=user.coder.id)   # Problem table has a coder field (FK)
-            #my_scripts =  Script.objects.filter(coder=user.coder.id)
+        if request.user.is_authenticated:
+            user = request.user
+            #my_locations = Location.objects.all()   # all_problems is a list object [   ]
+            my_locations = Location.objects.filter(traveler=user.traveler.id)   # Problem table has a coder field (FK)
 
             print('*********** Testing objs retrieved from DB ************')
-            #print('my_problems:', my_problems)
-            #print('my_scripts:', my_scripts)
+            print('my_locations:', my_locations)
             print('*******************************')
 
-            return render(request, "travel/dashboard.html")
+            return render(request, "travel/dashboard.html", {"user":user, "my_locations": my_locations})
+        else:
+            return redirect("travel:login")
+
+    else:
+        return HttpResponse(status=500)
+
+
+
 
 def create(request):
     if request.method == "POST":
@@ -175,8 +181,8 @@ def show_review(request, review_id):
             # make sure to import the fucntion get_object_or_404 from  django.shortcuts
             review = get_object_or_404(Review, pk=review_id)
             comments = Comment.objects.filter(review=review_id)
-
-            return render(request, "travel/show_review.html", {"user":user, "review":review, "comments":comments})
+            response = Response.objects.filter(review=review_id)
+            return render(request, "travel/show_review.html", {"user":user, "review":review, "comments":comments, "response":response})
 
 def edit_review(request, review_id):
     pass
@@ -188,4 +194,24 @@ def delete_review(request, review_id):
     pass
 
 def create_comment(request, review_id):
+    pass
+
+def show_comment(request, review_id):
+    if request.method == "GET":
+        user = request.user
+        if not user.is_authenticated:
+            return redirect("travel:login")
+        else:
+            # make sure to import the fucntion get_object_or_404 from  django.shortcuts
+            review = get_object_or_404(Review, pk=review_id)
+            comments = Comment.objects.filter(review=review_id)
+            return render(request, "travel/show_comment.html", {"user":user, "review":review, "comments":comments})
+
+def edit_comment(request, review_id):
+    pass
+
+def update_comment(request, review_id):
+    pass
+
+def delete_comment(request, review_id):
     pass
