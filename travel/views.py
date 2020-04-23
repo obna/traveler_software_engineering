@@ -47,8 +47,10 @@ def dashboard(request):
 
 
     if request.method == "GET":
-        if request.user.is_authenticated:
-            user = request.user
+        user = request.user
+        if not user.is_authenticated:
+            return redirect("travel:login")
+        else:
             #my_locations = Location.objects.all()   # all_problems is a list object [   ]
             my_locations = Location.objects.filter(traveler=user.traveler.id)   # Problem table has a coder field (FK)
 
@@ -57,9 +59,6 @@ def dashboard(request):
             print('*******************************')
 
             return render(request, "travel/dashboard.html", {"user":user, "my_locations": my_locations})
-        else:
-            return redirect("travel:login")
-
     else:
         return HttpResponse(status=500)
 
@@ -134,7 +133,7 @@ def show_destination(request, destination_id):
             # make sure to import the fucntion get_object_or_404 from  django.shortcuts
             destination = get_object_or_404(Destination, pk=destination_id)
             reviews = Review.objects.filter(destination=destination_id)
-            return render(request, "travel/show_destination.html", {"user":user, "destination":destination, "reviews":reviews})
+            return render(request, "travel/show_destination.html", {"user":user, "destination":destination})
 
 def edit_destination(request, destination_id):
     pass
@@ -181,8 +180,7 @@ def show_review(request, review_id):
             # make sure to import the fucntion get_object_or_404 from  django.shortcuts
             review = get_object_or_404(Review, pk=review_id)
             comments = Comment.objects.filter(review=review_id)
-            response = Response.objects.filter(review=review_id)
-            return render(request, "travel/show_review.html", {"user":user, "review":review, "comments":comments, "response":response})
+            return render(request, "travel/show_review.html", {"user":user, "review":review, "comments":comments})
 
 def edit_review(request, review_id):
     pass
